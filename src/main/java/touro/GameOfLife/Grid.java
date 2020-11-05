@@ -31,6 +31,22 @@ public class Grid {
         return liveCells;
     }
 
+    /***
+     * @param cell
+     * @return false if cell is already in liveCells
+     */
+    public boolean addCellToLiveCells(Cell cell) {
+        return liveCells.add(cell);
+    }
+
+    /***
+     * @param cell
+     * @return true if cell was in liveCells
+     */
+    public boolean removeCellFromLiveCells(Cell cell) {
+        return liveCells.remove(cell);
+    }
+
     public void advance() {
         HashSet<Cell> newLiveCells = new HashSet<>();
 
@@ -43,12 +59,16 @@ public class Grid {
                 if (liveCells.contains(neighbor)) {
                     liveNeighbors++;
 
-                    if (liveNeighbors == 3) {
-                        newLiveCells.add(cell);
+                    //break out early to save time
+                    if (liveNeighbors > 3) {
                         break;
                     }
                 }
+            }
 
+            if ((liveNeighbors == 2 || liveNeighbors == 3) && liveCells.contains(cell) ||
+                liveNeighbors == 3 && !liveCells.contains(cell)) {
+                newLiveCells.add(cell);
             }
         }
 
