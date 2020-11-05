@@ -1,32 +1,16 @@
 package touro.GameOfLife;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 
 public class Grid {
     private Direction[] directions = Direction.values();
+    private final HashSet<Cell> liveCells = new HashSet<>();
 
     //TODO: find a reasonable height and width
     public static final int HEIGHT = 20;
     public static final int WIDTH = 20;
 
-    private final List<Cell> allCells = new ArrayList<>();
-    private final HashSet<Cell> liveCells = new HashSet<>();
-
-    public Grid() {
-        for (int x = 0; x < WIDTH; x++) {
-            for (int y = 0; y < HEIGHT; y++) {
-                allCells.add(new Cell(x,y));
-            }
-        }
-    }
-
-    public List<Cell> getAllCells() {
-        return allCells;
-    }
-
-    //TODO: will the view need this as a list?
     public HashSet<Cell> getLiveCells() {
         return liveCells;
     }
@@ -48,29 +32,31 @@ public class Grid {
     }
 
     public void advance() {
-        HashSet<Cell> newLiveCells = new HashSet<>();
+        HashMap<Cell, Integer> potentialLiveCells = new HashMap<>();
 
-        for (Cell cell : allCells) {
-            int liveNeighbors = 0;
-
+        //fill hashmap of cells -> neighbors
+        for (Cell cell : liveCells) {
             for (Direction direction : directions) {
-                Cell neighbor = new Cell(cell.moveTo(direction));
+                Cell tempCell = new Cell(cell.moveTo(direction));
 
-                if (liveCells.contains(neighbor)) {
-                    liveNeighbors++;
-
-                    //break out early to save time
-                    if (liveNeighbors > 3) {
-                        break;
-                    }
-                }
+                //either create or increment key/value
+                int count = potentialLiveCells.getOrDefault(tempCell, 0);
+                potentialLiveCells.put(tempCell, count + 1);
             }
+        }
+
+        //add to newLiveCells cells which pass the conditions needed
+        HashSet<Cell> newLiveCells = new HashSet<>();
+        for (HashMap.Entry<Cell, Integer> entry : potentialLiveCells.entrySet()) {
+            Cell cell = entry.getKey();
+            int liveNeighbors = entry.getValue();
 
             if ((liveNeighbors == 2 && liveCells.contains(cell)) || liveNeighbors == 3) {
                 newLiveCells.add(cell);
             }
         }
 
+        //replace current liveCells with the new ones
         liveCells.clear();
         liveCells.addAll(newLiveCells);
     }
