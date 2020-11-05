@@ -32,6 +32,29 @@ public class Grid {
     }
 
     public void advance() {
+        HashMap<Cell, Integer> potentialLiveCells = getPotentialLiveCellsMap();
+        HashSet<Cell> newLiveCells = getNewLiveCells(potentialLiveCells);
+
+        //replace current liveCells with the new ones
+        liveCells.clear();
+        liveCells.addAll(newLiveCells);
+    }
+
+    private HashSet<Cell> getNewLiveCells(HashMap<Cell, Integer> potentialLiveCells) {
+        //add to newLiveCells cells which pass the conditions needed
+        HashSet<Cell> newLiveCells = new HashSet<>();
+        for (HashMap.Entry<Cell, Integer> entry : potentialLiveCells.entrySet()) {
+            Cell cell = entry.getKey();
+            int liveNeighbors = entry.getValue();
+
+            if ((liveNeighbors == 2 && liveCells.contains(cell)) || liveNeighbors == 3) {
+                newLiveCells.add(cell);
+            }
+        }
+        return newLiveCells;
+    }
+
+    private HashMap<Cell, Integer> getPotentialLiveCellsMap() {
         HashMap<Cell, Integer> potentialLiveCells = new HashMap<>();
 
         //fill hashmap of cells -> neighbors
@@ -44,20 +67,6 @@ public class Grid {
                 potentialLiveCells.put(tempCell, count + 1);
             }
         }
-
-        //add to newLiveCells cells which pass the conditions needed
-        HashSet<Cell> newLiveCells = new HashSet<>();
-        for (HashMap.Entry<Cell, Integer> entry : potentialLiveCells.entrySet()) {
-            Cell cell = entry.getKey();
-            int liveNeighbors = entry.getValue();
-
-            if ((liveNeighbors == 2 && liveCells.contains(cell)) || liveNeighbors == 3) {
-                newLiveCells.add(cell);
-            }
-        }
-
-        //replace current liveCells with the new ones
-        liveCells.clear();
-        liveCells.addAll(newLiveCells);
+        return potentialLiveCells;
     }
 }
