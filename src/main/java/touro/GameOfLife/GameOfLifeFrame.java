@@ -18,9 +18,11 @@ public class GameOfLifeFrame extends JFrame {
 
         add(gridView, BorderLayout.CENTER);
 
-        add(new JButton("Advance").addActionListener(actionEvent -> {
+        JButton advance = new JButton("Advance");
+        add(advance, BorderLayout.SOUTH);
+        advance.addActionListener(actionEvent -> {
             mouseClick.advancePressed(grid);
-        }));
+        });
 
         mouseClick.changeClicked(grid);
     }
