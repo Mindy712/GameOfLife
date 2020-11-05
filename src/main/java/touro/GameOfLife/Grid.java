@@ -66,8 +66,7 @@ public class Grid {
                 }
             }
 
-            if ((liveNeighbors == 2 || liveNeighbors == 3) && liveCells.contains(cell) ||
-                liveNeighbors == 3 && !liveCells.contains(cell)) {
+            if ((liveNeighbors == 2 && liveCells.contains(cell)) || liveNeighbors == 3) {
                 newLiveCells.add(cell);
             }
         }
