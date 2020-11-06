@@ -55,12 +55,10 @@ public class GridTest {
         nextMoveShouldBe.add(new Cell(3,3));
         nextMoveShouldBe.add(new Cell(4,2));
 
-        System.out.println(nextMoveShouldBe.size());
-
         //when
         grid.advance();
 
         //then
-        assertTrue(grid.getLiveCells().equals(nextMoveShouldBe));
+        assertEquals(grid.getLiveCells(), nextMoveShouldBe);
     }
 }
