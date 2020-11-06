@@ -6,10 +6,10 @@ import java.awt.*;
 public class GridView extends JComponent {
 
     private final Grid grid;
-    public static final int GRID_SIZE = 100;
+    public static final int GRID_SIZE = 500;
     public static final int CELL_SIZE = 10;
-    private final int rows = 30;
-    private final int cols = 30;
+    public static final int rows = GRID_SIZE/CELL_SIZE;
+    public static final int cols = GRID_SIZE/CELL_SIZE;
 
     public GridView(Grid grid) {
         this.grid = grid;
@@ -18,10 +18,11 @@ public class GridView extends JComponent {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        paintGrid(g);
+        drawGrid(g);
+        paintLiveCells(g);
     }
 
-    void paintGrid(Graphics g) {
+    void drawGrid(Graphics g) {
         g.setColor(Color.BLACK);
 
         for (int i = 0; i < rows; i++) {
@@ -32,6 +33,8 @@ public class GridView extends JComponent {
             g.drawLine(i * CELL_SIZE, 0, i * CELL_SIZE, GRID_SIZE);
         }
 
+    }
+        void paintLiveCells(Graphics g) {
         g.setColor(Color.YELLOW);
 
         for (Cell cell : grid.getLiveCells()) {
