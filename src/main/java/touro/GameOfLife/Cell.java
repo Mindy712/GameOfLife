@@ -11,7 +11,6 @@ public class Cell {
         this.y = y;
     }
 
-    //TODO: do I need this?
     public Cell(Cell cell) {
         this.x = cell.x;
         this.y = cell.y;
