@@ -18,8 +18,8 @@ public class GridView extends JComponent {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        drawGrid(g);
         paintLiveCells(g);
+        drawGrid(g);
     }
 
     void drawGrid(Graphics g) {

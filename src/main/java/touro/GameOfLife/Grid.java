@@ -5,11 +5,7 @@ import java.util.HashSet;
 
 public class Grid {
     private Direction[] directions = Direction.values();
-    private final HashSet<Cell> liveCells = new HashSet<>();
-
-    //TODO: find a reasonable height and width
-    public static final int HEIGHT = 20;
-    public static final int WIDTH = 20;
+    private HashSet<Cell> liveCells = new HashSet<>();
 
     public HashSet<Cell> getLiveCells() {
         return liveCells;
