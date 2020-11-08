@@ -2,6 +2,7 @@ package touro.GameOfLife;
 
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.HashSet;
 
 public class MouseClickEventListener {
     private MouseEvent e;
@@ -19,12 +20,13 @@ public class MouseClickEventListener {
            int y = e.getY();
 
            Cell currCell = new Cell(x, y);
+           HashSet<Cell> liveCells = grid.getLiveCells();
 
-           if (grid.liveCells.containsKey(currCell)) {
-               grid.liveCells.remove(currCell);
+           if (liveCells.contains(currCell)) {
+               liveCells.remove(currCell);
            }
            else {
-               grid.liveCells.add(currCell);
+               liveCells.add(currCell);
            }
        }
        catch (IOException e) {

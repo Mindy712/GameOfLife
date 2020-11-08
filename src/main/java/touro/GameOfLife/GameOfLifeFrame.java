@@ -6,12 +6,12 @@ import java.io.IOException;
 
 public class GameOfLifeFrame extends JFrame {
     public GameOfLifeFrame(Grid grid,
-                           GridView gridview,
+                           GridView gridView,
                            MouseClickEventListener mouseClick)
         throws HeadlessException {
         super();
 
-        setSize(grid.Width, grid.Height + 10);
+        setSize(grid.WIDTH, grid.HEIGHT + 10);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Game of Life");
         setLayout(new BorderLayout());

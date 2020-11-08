@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 public class GameOfLifeMain {
     public static void main(String[] args) {
         Grid grid = new Grid();
-        GridView gridview = new GridView();
+        GridView gridview = new GridView(grid);
         MouseEvent event = null;
         MouseClickEventListener mouseClick = new MouseClickEventListener(event);
 
