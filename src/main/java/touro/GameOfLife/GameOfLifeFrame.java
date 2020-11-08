@@ -11,7 +11,7 @@ public class GameOfLifeFrame extends JFrame {
         throws HeadlessException {
         super();
 
-        setSize(500, 550);
+        setSize(515, 563);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Game of Life");
         JPanel panel = new JPanel();
