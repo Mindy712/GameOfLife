@@ -1,44 +1,34 @@
 package touro.GameOfLife;
 
 import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.util.HashSet;
 
 public class MouseClickEventListener {
-    private MouseEvent e;
 
-    public MouseClickEventListener(MouseEvent e) {
-       this.e = e;
-   }
-
-   /*TODO: Would need to have methods to access the liveCells Hashset.
-        This will obviously not work, just wanted to get the idea down. */
-   public void changeClicked(Grid grid) {
+   public static void changeClicked(Grid grid, MouseEvent e) {
 
        try {
-           int x = e.getX();
-           int y = e.getY();
+           int x = e.getX() / GridView.CELL_SIZE;
+           int y = e.getY() / GridView.CELL_SIZE;
 
            Cell currCell = new Cell(x, y);
-           HashSet<Cell> liveCells = grid.getLiveCells();
 
-           if (liveCells.contains(currCell)) {
-               liveCells.remove(currCell);
+           if (grid.getLiveCells().contains(currCell)) {
+               grid.removeCellFromLiveCells(currCell);
            }
            else {
-               liveCells.add(currCell);
+               grid.addCellToLiveCells(currCell);
            }
        }
-       catch (IOException e) {
-           e.printStackTrace();
+       catch (Exception exception) {
+           exception.printStackTrace();
        }
    }
 
-   public void advancePressed(Grid grid) {
+   public static void advancePressed(Grid grid) {
        try {
            grid.advance();
-       } catch (IOException e) {
-           e.printStackTrace();
+       } catch (Exception exception) {
+           exception.printStackTrace();
        }
    };
 }

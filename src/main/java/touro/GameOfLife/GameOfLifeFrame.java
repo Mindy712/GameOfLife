@@ -2,28 +2,38 @@ package touro.GameOfLife;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class GameOfLifeFrame extends JFrame {
     public GameOfLifeFrame(Grid grid,
-                           GridView gridView,
-                           MouseClickEventListener mouseClick)
+                           GridView gridView)
         throws HeadlessException {
         super();
 
-        setSize(grid.WIDTH, grid.HEIGHT + 10);
+        setSize(500, 550);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Game of Life");
-        setLayout(new BorderLayout());
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        add(panel);
 
-        add(gridView, BorderLayout.CENTER);
+        panel.add(gridView, BorderLayout.CENTER);
 
         JButton advance = new JButton("Advance");
-        add(advance, BorderLayout.SOUTH);
+        panel.add(advance, BorderLayout.SOUTH);
         advance.addActionListener(actionEvent -> {
-            mouseClick.advancePressed(grid);
+            MouseClickEventListener.advancePressed(grid);
+            repaint();
         });
 
-        mouseClick.changeClicked(grid);
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                MouseClickEventListener.changeClicked(grid, e);
+                repaint();
+            }
+        });
     }
 }
