@@ -12,4 +12,6 @@ Click [here](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) to learn mor
 ## How To Play
 To start, simply tap on the cells to make them "live", and hit the Advance button to see the next generation.
 
+![screenshot](screenshot.png)
+
 *This project was made collaboratively by Michelle Berger, Mindy Gottlieb, and Tamar Aufrichtig*
