@@ -38,7 +38,7 @@ public class GridViewTest {
     @Test
     public void paintLiveCells() {
         //given
-        Grid grid = mock(Grid.class);
+        Grid grid = new Grid();
         GridView view = new GridView(grid);
 
         Graphics g = mock(Graphics.class);
@@ -57,6 +57,6 @@ public class GridViewTest {
         //then
         verify(g).fillRect(10 * CELL_SIZE, 20 * CELL_SIZE, CELL_SIZE, CELL_SIZE);
         verify(g).fillRect(20 * CELL_SIZE, 30 * CELL_SIZE, CELL_SIZE, CELL_SIZE);
-        verify(g).fillRect(15 * CELL_SIZE, 20 * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+        verify(g).fillRect(15 * CELL_SIZE, 18 * CELL_SIZE, CELL_SIZE, CELL_SIZE);
     }
 }
