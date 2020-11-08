@@ -34,7 +34,6 @@ public class GridViewTest {
         }
     }
 
-    //This fails
     @Test
     public void paintLiveCells() {
         //given
