@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'touro.GameOfLife'
+group 'touro.gameOfLife'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
