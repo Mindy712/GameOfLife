@@ -18,12 +18,18 @@ public class GridView extends JComponent {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        paintBackground(g);
         paintLiveCells(g);
         drawGrid(g);
     }
 
+    private void paintBackground(Graphics g) {
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 0, getWidth(), getHeight());
+    }
+
     void drawGrid(Graphics g) {
-        g.setColor(Color.BLACK);
+        g.setColor(Color.LIGHT_GRAY);
 
         for (int i = 0; i < rows; i++) {
             g.drawLine(0, i * CELL_SIZE, GRID_SIZE, i * CELL_SIZE);
