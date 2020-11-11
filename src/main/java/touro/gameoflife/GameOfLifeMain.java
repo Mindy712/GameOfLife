@@ -1,4 +1,4 @@
-package touro.GameOfLife;
+package touro.gameoflife;
 
 public class GameOfLifeMain {
     public static void main(String[] args) {

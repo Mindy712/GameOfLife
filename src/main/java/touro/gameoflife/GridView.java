@@ -1,4 +1,4 @@
-package touro.GameOfLife;
+package touro.gameoflife;
 
 import javax.swing.*;
 import java.awt.*;

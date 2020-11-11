@@ -1,11 +1,10 @@
-package touro.GameOfLife;
+package touro.gameoflife;
 
 import org.junit.Test;
 
 import java.awt.event.MouseEvent;
 import java.util.HashSet;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class MouseClickEventListenerTest {
