@@ -1,4 +1,4 @@
-package touro.GameOfLife;
+package touro.gameoflife;
 
 import org.junit.Test;
 
@@ -6,10 +6,10 @@ import static org.mockito.Mockito.*;
 
 import java.awt.*;
 
-import static touro.GameOfLife.GridView.GRID_SIZE;
-import static touro.GameOfLife.GridView.CELL_SIZE;
-import static touro.GameOfLife.GridView.rows;
-import static touro.GameOfLife.GridView.cols;
+import static touro.gameoflife.GridView.GRID_SIZE;
+import static touro.gameoflife.GridView.CELL_SIZE;
+import static touro.gameoflife.GridView.rows;
+import static touro.gameoflife.GridView.cols;
 
 public class GridViewTest {
 
