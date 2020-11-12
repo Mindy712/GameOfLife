@@ -56,7 +56,7 @@ public class Grid {
         //fill hashmap of cells -> neighbors
         for (Cell cell : liveCells) {
             for (Direction direction : directions) {
-                Cell tempCell = new Cell(cell.moveTo(direction));
+                Cell tempCell = cell.moveTo(direction);
 
                 //either create or increment key/value
                 int count = potentialLiveCells.getOrDefault(tempCell, 0);
