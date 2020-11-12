@@ -2,13 +2,23 @@ plugins {
     id 'java'
 }
 
-group 'touro.gameOfLife'
+group 'touro.gameoflife'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+}
+
+//https://stackoverflow.com/questions/4871656/using-gradle-to-build-a-jar-with-dependencies/4894308#4894308
+jar {
+    manifest {
+        attributes "Main-Class": "touro.GameOfLife.GameOfLifeMain"
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
 
 dependencies {

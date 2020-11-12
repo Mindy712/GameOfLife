@@ -1,4 +1,4 @@
-package touro.GameOfLife;
+package touro.gameoflife;
 
 import java.awt.event.MouseEvent;
 
@@ -30,5 +30,5 @@ public class MouseClickEventListener {
        } catch (Exception exception) {
            exception.printStackTrace();
        }
-   };
+   }
 }
